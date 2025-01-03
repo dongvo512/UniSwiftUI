@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CodeScanner
+import AVFoundation
 
 struct ScanQRPageView: View {
     
@@ -52,11 +53,45 @@ struct ScanQRPageView: View {
                     .frame(width: UIScreen.screenWidth, height: widthCamera, alignment: .center)
                     .background(.clear)
                     
+                    HStack {
+//                        Button(action: {
+//                           toggleTorch(on: <#T##Bool#>)
+//                            
+//                        }) {
+//                            Image("btn_turnon_flash")
+//                        }
+                    }
+                    .background(.black.opacity(0.2))
+                    
+                    Color.black.opacity(0.2)
+                    
                     Color.black.opacity(0.2)
                 }
                 .background(.clear)
             }
             .edgesIgnoringSafeArea(.all)
+        }
+    }
+    
+    private func toggleTorch(on: Bool) {
+        guard let device = AVCaptureDevice.default(for: .video) else { return }
+
+        if device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+
+                if on == true {
+                    device.torchMode = .on
+                } else {
+                    device.torchMode = .off
+                }
+
+                device.unlockForConfiguration()
+            } catch {
+                print("Torch could not be used")
+            }
+        } else {
+            print("Torch is not available")
         }
     }
     

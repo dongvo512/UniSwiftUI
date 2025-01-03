@@ -20,10 +20,6 @@ struct StorageKey {
 class LocaleStorageService {
     
     static let shared = LocaleStorageService()
-   
-    func clearAuthenticate(){
-        
-    }
     
     // - Language
     func saveLanguageCurr(language:String?){

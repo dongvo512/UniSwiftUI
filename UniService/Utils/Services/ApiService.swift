@@ -16,7 +16,7 @@ struct AppException {
     var errorValidate:[ValidResult]?
     
     func getErrorMess() -> String{
-       
+        
         if let validates = self.errorValidate, validates.count > 0 {
             return validates.first?.message ?? S.empty
         }
@@ -393,7 +393,7 @@ class ApiService:NSObject{
             if let versionApp = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
                 
                 if versionApp.versionCompare(appVersion) == .orderedAscending {
-                
+                    
                     AppAlert.showAlertOK(title: "title_new_version".localized(), mess: "move_to_appstore".localized(), isNeverClose:true) {
                         
                         if let url = URL(string: S.app_store_link) {

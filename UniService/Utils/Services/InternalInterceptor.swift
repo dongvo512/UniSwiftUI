@@ -13,7 +13,7 @@ class InternalInterceptor: RequestInterceptor {
     typealias AdapterResult<T> = Result<T, Error>
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (AdapterResult<URLRequest>) -> Void) {
-        print("ADAPT :=")
+       // print("ADAPT :=")
         
         var urlRequest = urlRequest
         
